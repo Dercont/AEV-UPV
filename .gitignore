@@ -1,0 +1,10 @@
+/desarrollo_3DS
+/desarrollo_NDS
+/build
+*.3dsx
+*.elf
+*.smdh
+*.d
+*.o
+*.lst
+*.map
