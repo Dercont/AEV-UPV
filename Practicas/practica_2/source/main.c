@@ -4,10 +4,12 @@ Se propone hacer una aplicación para 3DS que cuente el número de clics que el 
 
 #include <3ds.h>
 #include <stdio.h>
-// #include <time.h>
+#include <time.h>
 
 int main(int argc, char **argv)
 {
+	//Timer
+
 	// Initialize services
 	gfxInitDefault();
 
@@ -16,9 +18,6 @@ int main(int argc, char **argv)
 
 	//Touch Counter
 	int times = 0;
-
-	printf("\x1b[1;1HPress A to restart counter.");
-	printf("\x1b[2;1HTouched Times: %d", (int)times);
 
 	// Main loop
 	while (aptMainLoop())
@@ -29,18 +28,20 @@ int main(int argc, char **argv)
 		//hidKeysDown returns information about which buttons have been just pressed (and they weren't in the previous frame)
 		u32 kDown = hidKeysDown();
 
-		if (kDown & KEY_A)
-			times = 0;
-		if (kDown & KEY_TOUCH)
-			times++;
+		//Labels
+		printf("\x1b[1;1HPress A to restart counter.");
+		printf("\x1b[2;1HTouched Times: %d", (int)times);
 
-		{
+		//Timer
+
+		if (kDown & KEY_A)
 			//Clear console
 			consoleClear();
 
-			//These two lines must be rewritten because we cleared the whole console
-			printf("\x1b[1;1HPress A to restart counter.");
-			printf("\x1b[2;1HTouched Times: %d", (int)times);
+		if (kDown & KEY_TOUCH)
+		{
+			if ()
+				times++;
 		}
 
 		// Flush and swap framebuffers
